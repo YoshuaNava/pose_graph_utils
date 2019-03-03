@@ -11,7 +11,5 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   <depend>cmake_modules</depend>
-  <depend>g2o_catkin</depend>
-  <depend>gtsam_catkin</depend>
 
 </package>

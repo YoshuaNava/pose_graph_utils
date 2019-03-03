@@ -58,20 +58,15 @@ PoseGraphG2O::~PoseGraphG2O() {
 }
 
 g2o::VertexSE3* PoseGraphG2O::addSe3Node(const Eigen::Isometry3d& pose) {
-  g2o::VertexSE3* vertex = new g2o::VertexSE3();
-  std::cout << "vertex id = " << optimizer->vertices().size() << std::endl;
+  g2o::VertexSE3* vertex(new g2o::VertexSE3());
   vertex->setId(optimizer->vertices().size());
-  std::cout << "    ID set" << std::endl;
-  g2o::Isometry3 pose_isometry = pose;
-  vertex->setEstimate(pose_isometry);
+  vertex->setEstimate(pose);
 
   if (optimizer->vertices().size() == 0) {
-    std::cout << "    SET FIXED" << std::endl;
     vertex->setFixed(true);
   }
 
   optimizer->addVertex(vertex);
-  std::cout << "  NEW VERTEX READY" << std::endl;
 
   return vertex;
 }
